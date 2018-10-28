@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>My page title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Learn All Jazz Chords</h1>
+    </header>
+
+
+    <main>
+            <h2 id="chord"></h2>
+            <input id="newChord" type="button" value="New Chord">
+    </main>
+
+    <footer>
+    </footer>
+
+  </body>
+
+  <script>
+      returnRandomNote = () => {
+        let notes = ["A", "B", "B♭", "C", "D", "E", "E♭", "F", "G"];
+        let pick = Math.floor(Math.random() * Math.floor(notes.length));
+        return notes[pick];
+      }
+
+      returnRandomModifier = () => {
+          let modifier = ["♮", "♭", "♯"];
+          let pick = Math.floor(Math.random() * modifier.length);
+          return modifier[pick];
+      }
+
+      returnRandomFlavor = () => {
+        let flavors = ["Major 7th", "Minor 7th", "Dominant 7th", "Minor 7(♭5)", "Diminished"];
+        let pick = Math.floor(Math.random() * flavors.length);
+        return flavors[pick];
+      }
+
+      returnRandomChord = () => {
+          return returnRandomNote() + " " + returnRandomFlavor();
+      }
+      
+      document.getElementById("newChord").addEventListener("click", () => {
+          let changeChord = document.getElementById("chord");
+          changeChord.textContent = returnRandomChord();
+      });
+  </script>
+</html>
